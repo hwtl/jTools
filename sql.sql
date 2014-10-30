@@ -1,32 +1,27 @@
-
-CREATE DATABASE `gudlike_fishing` /*!40100 DEFAULT CHARACTER SET utf8 */;
-
-CREATE TABLE `t_fish` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `fishName` varchar(45) DEFAULT NULL,
-  `remark` varchar(200) DEFAULT NULL,
-  `createTime` datetime DEFAULT CURRENT_TIMESTAMP,
-  `creator` int(11) DEFAULT NULL,
-  `updateTime` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updator` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+ALTER TABLE `gudlike_fishing`.`t_point` 
+CHANGE COLUMN `pointType` `typeId` INT(11) NULL ;
 
 
-CREATE TABLE `t_point` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `pointType` int(11) DEFAULT NULL,
-  `remark` varchar(200) DEFAULT NULL,
-  `createTime` datetime DEFAULT CURRENT_TIMESTAMP,
-  `creator` int(11) NOT NULL DEFAULT '0',
-  `updateTime` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updator` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-
-CREATE TABLE `t_point_type` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `typeName` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE 
+    ALGORITHM = MERGE 
+    DEFINER = `root`@`localhost` 
+    SQL SECURITY DEFINER
+VIEW `v_point` AS
+    SELECT 
+        `a`.`id` AS `id`,
+        `a`.`typeId` AS `typeId`,
+        `a`.`remark` AS `remark`,
+        `a`.`createTime` AS `createTime`,
+        `a`.`creator` AS `creator`,
+        `a`.`updateTime` AS `updateTime`,
+        `a`.`updator` AS `updator`,
+        `b`.`typeName` AS `typeName`
+    FROM
+        (`t_point` `a`
+        JOIN `t_point_type` `b` ON ((`a`.`typeId` = `b`.`id`)))
+        
+        
+ALTER TABLE `gudlike_fishing`.`t_point` 
+ADD COLUMN `latitude` DECIMAL(18,15) NULL AFTER `updator`,
+ADD COLUMN `longitude` DECIMAL(18,15) NULL AFTER `latitude`;
