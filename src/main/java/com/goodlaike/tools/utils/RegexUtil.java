@@ -1,4 +1,4 @@
-package com.gudlike.tools.utils;
+package com.goodlaike.tools.utils;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

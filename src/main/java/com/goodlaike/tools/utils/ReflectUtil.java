@@ -1,4 +1,4 @@
-package com.gudlike.tools.utils;
+package com.goodlaike.tools.utils;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;

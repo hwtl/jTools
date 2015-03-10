@@ -1,4 +1,4 @@
-package com.gudlike.tools.utils;
+package com.goodlaike.tools.utils;
 
 import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.httpclient.params.HttpMethodParams;

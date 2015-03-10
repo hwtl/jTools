@@ -1,4 +1,4 @@
-package com.gudlike.tools.utils;
+package com.goodlaike.tools.utils;
 /** 
  * StringBuilder Helper类
  * @author Jail    E -Mail:86455@ dooioo.com 
