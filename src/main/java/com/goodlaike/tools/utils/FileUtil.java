@@ -4,10 +4,11 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
+import com.goodlaike.tools.enums.FileType;
+
 /**
- * Created with IntelliJ IDEA.
- * Create: GuSi (2013-05-14 08:29) Description: To change this template use File
- * | Settings | File Templates.
+ * Created with IntelliJ IDEA. Create: GuSi (2013-05-14 08:29) Description: To
+ * change this template use File | Settings | File Templates.
  */
 public class FileUtil {
 
@@ -81,20 +82,20 @@ public class FileUtil {
 	 * @return
 	 * @throws IOException
 	 */
-	public static String getFileType(String fileName) throws IOException {
+	public static FileType getFileType(String fileName) throws IOException {
 		String suffix = getSuffix(fileName).toLowerCase();
 		if (images.contains(suffix)) {
-			return "image";
+			return FileType.IMAGE;
 		} else if (pdfs.contains(suffix)) {
-			return "pdf";
+			return FileType.PDF;
 		} else if (docs.contains(suffix)) {
-			return "doc";
+			return FileType.WORD;
 		} else if (txts.contains(suffix)) {
-			return "txt";
+			return FileType.TXT;
 		} else if (xlss.contains(suffix)) {
-			return "xls";
+			return FileType.EXCEL;
 		} else if (videos.contains(suffix)) {
-			return "video";
+			return FileType.VIDEO;
 		}
 		throw new IOException("wrong file type");
 	}
